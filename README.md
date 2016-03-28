@@ -2,6 +2,11 @@ PadGen
 ======
 Command line one-time pad generator. Should work on any unix-like system. Please, note: it's just a wrapper of your /dev/random. Probably, it's better not to use it in serious circumstances. Or try to feed your /dev/random from some hardware RNG.
 
+Requirements
+------------
+
+Working `/dev/random` and `cat` installed. Enough rigths to use them.
+
 Usage
 -----
 
@@ -9,7 +14,7 @@ padgen -p (number of pages) -l (lines per page)
 
 Result
 ------
-Something like this (padgen -p 2 -l 6 ):
+Something like this (`padgen -p 2 -l 6` ):
 
     -----------------------------
     24797 29389 59161 43029 08815
