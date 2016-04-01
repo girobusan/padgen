@@ -31,5 +31,6 @@ lib/
 
 #Crazy stuff
 
+padgen
 *.ora
 *.ora~
