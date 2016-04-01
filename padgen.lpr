@@ -29,10 +29,11 @@ var
   ErrorMsg: String;
   Pages:Integer=10;
   Lines:Integer=20;
+  Columns:Integer=6;
   Pad:String;
 begin
   // quick check parameters
-  ErrorMsg:=CheckOptions('hlp', ['help', 'lines', 'pages'] );
+  ErrorMsg:=CheckOptions('hlpc', ['help', 'lines', 'pages', 'columns'] );
   if ErrorMsg<>'' then begin
     Writeln('Error: '+ ErrorMsg);
     Terminate;
@@ -54,11 +55,15 @@ begin
     Pages:= StrToInt(GetOptionValue('p', 'pages'))
   end;
 
+  if HasOption('c', 'columns') then begin
+    Columns:= StrToInt(GetOptionValue('c', 'columns'))
+  end;
+
   { add your program here }
-  Pad:=CreatePad(Pages, Lines);
+  Pad:=CreatePad(Pages, Lines, Columns);
   if Pad='' then begin
-  write('Something has gone wrong. Check, if your system has "cat" ');
-  writeln('installed, and you have enough rights to acsess it and to read /dev/random')
+  write('Something has gone wrong. Check, if ');
+  writeln('you have enough rights to acsess /dev/random')
   end
   else writeln(Pad);
 
@@ -81,8 +86,9 @@ procedure TPadGen.WriteHelp;
 begin
   { add your help code here }
   writeln ('Simple one-time-pad generator.');
-  writeln('Usage: ', 'padgen', ' -p <number of pages> -l <lines per page>');
-  writeln ('Defaults are 10 pages, 20 lines (5000 digits total)')
+  writeln('Usage: ', 'padgen', ' -p <number of pages>');
+  writeln('-l <lines per page> -c <columns by 5 digits>');
+  writeln ('Defaults are 10 pages, 20 lines , 6 columns (6000 digits total)')
 end;
 
 var

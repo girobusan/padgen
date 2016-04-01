@@ -10,11 +10,11 @@ Working `/dev/random` and `cat` installed. Enough rigths to use them.
 Usage
 -----
 
-padgen -p (number of pages) -l (lines per page)
+padgen -p (number of pages) -l (lines per page) -c (number of columns)
 
 Result
 ------
-Something like this (`padgen -p 2 -l 6` ):
+Something like this (`padgen -p 2 -l 6 -c 5` ):
 
     -----------------------------
     24797 29389 59161 43029 08815
