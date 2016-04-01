@@ -10,19 +10,21 @@ uses
 type
   T5bytes = array of byte;
 
-function CreatePad(pages: integer = 10; linespage: integer = 20; columns:integer=6): ansistring;
+function CreatePad(pages: integer = 10; linespage: integer = 20;
+  columns: integer = 6): ansistring;
 
 implementation
 
-function createLine(c:integer):string;
+function createLine(c: integer): string;
 var
-  dn:integer;
-  i:integer;
-  r:string='';
+  dn: integer;
+  i: integer;
+  r: string = '';
 begin
-  dn:=c*5 + (c-1);
-  for i:=1 to dn do r+='-';
-  Result:=r;
+  dn := c * 5 + (c - 1);
+  for i := 1 to dn do
+    r += '-';
+  Result := r;
 end;
 
 function getNums(b: T5bytes): ansistring;
@@ -30,14 +32,15 @@ var
   i: integer;
   ns: string = '';
 begin
-  for i := 0 to (length(b)-1) do
+  for i := 0 to (length(b) - 1) do
   begin
-    ns += IntToStr( b[i] mod 10 );
+    ns += IntToStr(b[i] mod 10);
   end;
   Result := ns;
 end;
 
-function CreatePad(pages: integer = 10; linespage: integer = 20;columns:integer=6): ansistring;
+function CreatePad(pages: integer = 10; linespage: integer = 20;
+  columns: integer = 6): ansistring;
 var
 
   Buffer: array of byte; //array[1..BUF_SIZE]  of byte;
@@ -47,6 +50,10 @@ var
   padStr: string = '';
   p: integer;
 begin
+  if pages*linespage*columns=0 then begin
+    Result:='';
+    Exit
+  end;
 
   AssignFile(devrnd, '/dev/random');
   Reset(devrnd, sizeOf(byte));
