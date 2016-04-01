@@ -5,7 +5,7 @@ Command line one-time pad generator. Should work on any unix-like system. Please
 Requirements
 ------------
 
-Working `/dev/random` and `cat` installed. Enough rigths to use them.
+Working `/dev/random`. Enough rigths to open it.
 
 Usage
 -----
