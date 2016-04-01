@@ -14,16 +14,14 @@ function CreatePad(pages: integer = 10; linespage: integer = 20): ansistring;
 
 implementation
 
-function getNums(b: T5bytes; n: integer = 5): ansistring;
+function getNums(b: T5bytes): ansistring;
 var
   i: integer;
-  tmpi: integer;
   ns: string = '';
 begin
-  for i := 0 to n - 1 do
+  for i := 0 to (length(b)-1) do
   begin
-    tmpi := b[i] mod 10;
-    ns += IntToStr(tmpi);
+    ns += IntToStr( b[i] mod 10 );
   end;
   Result := ns;
 end;
@@ -61,9 +59,9 @@ begin
       until Length(buffer) = 5;
 
       if (counter mod 5 = 0) then
-        padStr += getNums(Buffer, Length(Buffer)) + sLineBreak
+        padStr += getNums(Buffer) + sLineBreak
       else
-        padStr += getNums(Buffer, Length(Buffer)) + ' ';
+        padStr += getNums(Buffer) + ' ';
     until counter = linespage * 5;  // Stop
 
     ////////////PAGE READY///////////////////////
