@@ -24,7 +24,7 @@ begin
   dn := c * 5 + (c - 1);
   for i := 1 to dn do
     r += '-';
-  Result := r;
+  Result := r
 end;
 
 function getNums(b: T5bytes): ansistring;
@@ -36,7 +36,7 @@ begin
   begin
     ns += IntToStr(b[i] mod 10);
   end;
-  Result := ns;
+  Result := ns
 end;
 
 function CreatePad(pages: integer = 10; linespage: integer = 20;
@@ -85,7 +85,7 @@ begin
     ////////////PAGE READY///////////////////////
   end;
   padstr += createLine(columns);
-  Result := padStr;
+  Result := padStr
 end;
 
 end.
